@@ -67,3 +67,19 @@ main {
 .card p {
     margin: 5px 0;
 }
+
+dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    padding: 5em 10em;
+    border-radius: 8px;
+}
+
+dialog img[src*=svg] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    cursor: pointer;
+}
