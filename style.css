@@ -5,6 +5,10 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+body {
+    background-color: beige;
+}
+
 .main-title {
     height: 2em;
     display: flex;
@@ -15,3 +19,17 @@
     font-weight: bold;
     font-size: 3em;
 }
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 91vh;
+}
+
+/* .sidebar {
+    background-color: burlywood;
+}
+
+.books {
+    background-color: khaki;
+} */
