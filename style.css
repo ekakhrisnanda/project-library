@@ -14,8 +14,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    color: white;
+    background-color: lightgray;
+    color: black;
     font-weight: bold;
     font-size: 3em;
 }
@@ -26,10 +26,13 @@ main {
     height: 91vh;
 }
 
-/* .sidebar {
+ .sidebar {
     background-color: burlywood;
 }
 
 .books {
-    background-color: khaki;
-} */
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: inherit;
+}

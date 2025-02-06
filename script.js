@@ -7,11 +7,24 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary(book) {
+function addBookToLibrary(title, author, pages, read) {
+    const book = new Book(title, author, pages, read) 
     myLibrary.push(book);
 }
 
-const theDip = new Book('The Dip', 'Seth Godin', 93, 'Have read');
-const range = new Book('Range', 'David Epstein', 390, 'Haven"t read yet');
-addBookToLibrary(theDip);
-addBookToLibrary(range);
+const myLibrary = [];
+
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+}
+
+function addBookToLibrary(title, author, pages, read) {
+    const book = new Book(title, author, pages, read) 
+    myLibrary.push(book);
+}
+
+addBookToLibrary('The Dip', 'Seth Godin', 93, 'Have read');
+addBookToLibrary('Range', 'David Epstein', 390, 'Not yet');
