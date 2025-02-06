@@ -1,4 +1,8 @@
 const cardWrapper = document.querySelector('.card-wrapper');
+const showDialogButton = document.querySelector('.show-dialog');
+const closeDialogButton = document.querySelector('img[src="window-close.svg"');
+const addBookDialog = document.querySelector('dialog');
+const form = document.querySelector('form');
 
 const myLibrary = [];
 
@@ -25,6 +29,8 @@ addBookToLibrary('Range', 'David Epstein', 390, 'Yes');
 
 
 function displayBook() {
+    cardWrapper.innerHTML= '';
+
     myLibrary.forEach((book) => {
         const card = `
             <div class="card">
@@ -40,3 +46,27 @@ function displayBook() {
 }
 
 displayBook();
+
+function addNewBook() {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const obj = Object.fromEntries(formData);
+        console.log(myLibrary);
+        addBookToLibrary(obj.title, obj.author, parseFloat(obj.pages), obj.read);
+
+        displayBook();
+        form.reset();
+        addBookDialog.close();
+    });
+}
+
+addNewBook();
+
+showDialogButton.addEventListener('click', () => {
+    addBookDialog.showModal();
+});
+
+closeDialogButton.addEventListener('click', () => {
+    addBookDialog.close();
+});
