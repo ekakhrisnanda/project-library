@@ -38,6 +38,10 @@ function displayBook() {
                 <h3>${book.author}</h3>
                 <h4>${book.pages} pages</h4>
                 <p>Read Status: ${book.read}</p>
+                <div class="card-button">
+                    <button type="button">Change Read</button>
+                    <button type="button">Remove</button>
+                </div>
             </div>
         `;
 
@@ -70,3 +74,10 @@ showDialogButton.addEventListener('click', () => {
 closeDialogButton.addEventListener('click', () => {
     addBookDialog.close();
 });
+
+// create a button for delete the object of a book
+// create a container containing 2 buttons, read and remove in html
+// add event listener to remove button triggered by click
+// loop through myLibrary and use book and index as arguments
+// add data attributes: data-index='[i]'
+// if data-index === i splice(i, 1)
