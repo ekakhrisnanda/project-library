@@ -117,6 +117,8 @@ button[type="submit"] {
     background-color: black;
     color: white;
     border: none;
+    padding: 0.8rem 1rem;
+    margin-top: 10px;
 }
 
 input,
@@ -130,6 +132,7 @@ form {
     inset: 0;
     margin: auto;
     width: 60%;
+    margin-top: 10%;
 }
 
 dialog img[src*=svg] {
