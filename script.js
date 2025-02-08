@@ -31,25 +31,55 @@ addBookToLibrary('Range', 'David Epstein', 390, 'Yes');
 function displayBook() {
     cardWrapper.innerHTML= '';
 
-    myLibrary.forEach((book) => {
-        const card = `
-            <div class="card">
-                <h2>${book.title}</h2>
-                <h3>${book.author}</h3>
-                <h4>${book.pages} pages</h4>
-                <p>Read Status: ${book.read}</p>
-                <div class="card-button">
-                    <button type="button">Change Read</button>
-                    <button type="button">Remove</button>
-                </div>
-            </div>
-        `;
+    myLibrary.forEach((book, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
 
-        cardWrapper.innerHTML += card;
+        const h2 = document.createElement('h2');
+        h2.textContent = `${book.title}`;
+        card.appendChild(h2);
+
+        const h3 = document.createElement('h3');
+        h3.textContent = `${book.author}`;
+        card.appendChild(h3);
+
+        const h4 = document.createElement('h4');
+        h4.textContent = `${book.pages} pages`;
+        card.appendChild(h4);
+
+        const p = document.createElement('p');
+        p.textContent = `Read Status: ${book.read}`;
+        card.appendChild(p);
+
+        const cardButton = document.createElement('div');
+        cardButton.classList.add('card-button');
+        card.appendChild(cardButton);
+
+        const readButton = document.createElement('button');
+        readButton.type = 'button';
+        readButton.classList.add('read-button');
+        readButton.textContent = 'Change Read'
+        // readButton.onclick = changeRead;
+        readButton.setAttribute('data-index', index);
+        cardButton.appendChild(readButton);
+
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.classList.add('remove-button');
+        removeButton.textContent = 'Remove Book'
+        removeButton.onclick = removeBook;
+        removeButton.setAttribute('data-index', index);
+        cardButton.appendChild(removeButton);
+
+        cardWrapper.appendChild(card);
     }); 
 }
 
 displayBook();
+
+function removeBook() {
+    console.log('string');
+}
 
 function addNewBook() {
     form.addEventListener('submit', (e) => {
