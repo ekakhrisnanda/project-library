@@ -58,7 +58,7 @@ function displayBook() {
         card.appendChild(h4);
 
         const p = document.createElement('p');
-        p.textContent = `Read Status: ${book.read}`;
+        p.textContent = `Read Status: <span class="read-status>${book.read}</span>`;
         card.appendChild(p);
 
         const cardButton = document.createElement('div');
