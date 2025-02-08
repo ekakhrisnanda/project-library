@@ -13,6 +13,16 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+Book.prototype.changeRead = function() {
+    if(this.read === 'Yes') {
+        this.read = 'No';
+        displayBook();
+    } else if(this.read === 'No') {
+        this.read = 'Yes';
+        displayBook();
+    }
+}
+
 function addBookToLibrary(title, author, pages, read) {
     const book = new Book(title, author, pages, read) 
     myLibrary.push(book);
@@ -33,7 +43,6 @@ function displayBook() {
 
     myLibrary.forEach((book, index) => {
         const card = document.createElement('div');
-        card.dataset.index = index;
         card.classList.add('card');
 
         const h2 = document.createElement('h2');
@@ -59,8 +68,8 @@ function displayBook() {
         const readButton = document.createElement('button');
         readButton.type = 'button';
         readButton.classList.add('read-button');
-        readButton.textContent = 'Change Read'
-        // readButton.onclick = changeRead;
+        readButton.textContent = 'Change Read';
+        readButton.onclick = book.changeRead.bind(book);
         readButton.setAttribute('data-index', index);
         cardButton.appendChild(readButton);
 
@@ -90,7 +99,6 @@ function addNewBook() {
         e.preventDefault();
         const formData = new FormData(form);
         const obj = Object.fromEntries(formData);
-        console.log(myLibrary);
         addBookToLibrary(obj.title, obj.author, parseFloat(obj.pages), obj.read);
 
         displayBook();
@@ -108,10 +116,3 @@ showDialogButton.addEventListener('click', () => {
 closeDialogButton.addEventListener('click', () => {
     addBookDialog.close();
 });
-
-// create a button for delete the object of a book
-// create a container containing 2 buttons, read and remove in html
-// add event listener to remove button triggered by click
-// loop through myLibrary and use book and index as arguments
-// add data attributes: data-index='[i]'
-// if data-index === i splice(i, 1)
