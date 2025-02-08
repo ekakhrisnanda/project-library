@@ -33,6 +33,7 @@ function displayBook() {
 
     myLibrary.forEach((book, index) => {
         const card = document.createElement('div');
+        card.dataset.index = index;
         card.classList.add('card');
 
         const h2 = document.createElement('h2');
@@ -67,18 +68,21 @@ function displayBook() {
         removeButton.type = 'button';
         removeButton.classList.add('remove-button');
         removeButton.textContent = 'Remove Book'
+        removeButton.dataset.index = index;
         removeButton.onclick = removeBook;
-        removeButton.setAttribute('data-index', index);
         cardButton.appendChild(removeButton);
 
         cardWrapper.appendChild(card);
-    }); 
+    });
 }
 
 displayBook();
 
-function removeBook() {
-    console.log('string');
+function removeBook() {    
+    if(this.dataset.index) {
+        myLibrary.splice(this.dataset.index, 1);
+        displayBook();
+    }
 }
 
 function addNewBook() {
