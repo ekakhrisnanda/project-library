@@ -6,20 +6,22 @@ const form = document.querySelector('form');
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-Book.prototype.changeRead = function() {
-    if(this.read === 'Yes') {
-        this.read = 'No';
-        displayBook();
-    } else if(this.read === 'No') {
-        this.read = 'Yes';
-        displayBook();
+    changeRead = () => {
+        if(this.read === 'Yes') {
+            this.read = 'No';
+            displayBook();
+        } else if(this.read === 'No') {
+            this.read = 'Yes';
+            displayBook();
+        }
     }
 }
 
@@ -58,7 +60,7 @@ function displayBook() {
         card.appendChild(h4);
 
         const p = document.createElement('p');
-        p.textContent = `Read Status: <span class="read-status>${book.read}</span>`;
+        p.textContent = `Read Status: ${book.read}`;
         card.appendChild(p);
 
         const cardButton = document.createElement('div');
